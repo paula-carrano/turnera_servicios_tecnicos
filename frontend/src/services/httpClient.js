@@ -1,6 +1,6 @@
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:3001/api').replace(/\/$/, '');
 
-export async function request(path, { method = 'GET', body, signal } = {}) {
+export const request = async (path, { method = 'GET', body, signal } = {}) => {
   let response;
   try {
     response = await fetch(`${BASE}${path}`, {
@@ -20,12 +20,4 @@ export async function request(path, { method = 'GET', body, signal } = {}) {
   }
   if (!payload) throw new Error('El servidor devolvió una respuesta inválida.');
   return payload;
-}
-
-export const api = {
-  list: (tab, signal) => request(`/pedidos?solapa=${tab}`, { signal }),
-  detail: (id, signal) => request(`/pedidos/${id}`, { signal }),
-  create: (body) => request('/pedidos', { method: 'POST', body }),
-  update: (id, body) => request(`/pedidos/${id}`, { method: 'PATCH', body }),
-  comment: (id, body) => request(`/pedidos/${id}/comentarios`, { method: 'POST', body }),
 };
