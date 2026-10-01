@@ -1,20 +1,29 @@
 {
-  "name": "turnera-servicios-frontend",
+  "name": "turnera-frontend",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.1",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "test": "vitest run"
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8",
+    "luxon": "^3.7.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.2",
-    "vite": "^7.1.3",
-    "vitest": "^3.2.4"
+    "@playwright/test": "^1.55.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.1.0",
+    "vitest": "^4.1.11"
   }
 }
